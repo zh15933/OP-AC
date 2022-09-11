@@ -7,34 +7,8 @@
 # 如果你的OP是当主路由的话，网关、DNS、广播都不需要，代码前面加 # 注释掉，只保留后台地址和子网掩码就可以
 # 如果你有编译ipv6的话，‘去掉LAN口使用内置的 IPv6 管理’代码前面也加 # 注释掉
 
-#  调整argon登录框为居中 
-  sed -i  " /.login-page {/i \\ 
-  .login-container {\n \ 
-    margin: auto;\n \ 
-    height: 500px\!important;\n \ 
-    min-height: 500px\!important;\n \ 
-    left: 0;\n \ 
-    right: 0;\n \ 
-    bottom: 0;\n \ 
-    margin-left: auto\!important;\n \ 
-    border-radius: 25px;\n \ 
-  }\n \ 
-  .login-form {\n \ 
-    background-color: rgba(255, 255, 255, 0)\!important;\n \ 
-    border-radius: 25px;\n \ 
-  }\n \ 
-  .login-form .brand {\n \ 
-    margin: 25px auto 25px 50px\!important;\n \ 
-  }\n \ 
-  .input-group {\n \ 
-    margin-bottom: 1rem\!important;\n \ 
-  }\n \ 
-  .input-group input {\n \ 
-    margin-bottom: 0\!important;\n \ 
-  }\n \ 
-  .ftc {\n \ 
-    bottom: 0\!important;\n \ 
-  } "  feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
+
+
 
 cat >$NETIP <<-EOF
 uci set network.lan.ipaddr='192.168.5.1'                      # IPv4 地址(openwrt后台地址)
