@@ -18,14 +18,15 @@ on:
   workflow_dispatch:
     inputs:
       REPO_BRANCH:
-        description: '天灵源码-请选择分支'
+        description: '（天灵源码）请选择源码分支'
         required: true
         default: 'openwrt-21.02'
         type: choice
         options:
+          - 'openwrt-23.05'
           - 'openwrt-21.02'
-          - 'openwrt-18.06-k5.4'
           - 'openwrt-18.06'
+          - 'openwrt-18.06-k5.4'
           - 'master'
       CONFIG_FILE:
         description: '请选择配置文件'
@@ -75,7 +76,7 @@ on:
         default: 'true'
         type: boolean
       UPDATE_FIRMWARE_ONLINE:
-        description: '增加在线更新功能/N1和晶晨系列固件打包'
+        description: '增加在线更新功能/打包Amlogic、Rockchip系列固件'
         required: false
         default: 'true'
         type: boolean

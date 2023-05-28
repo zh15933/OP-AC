@@ -18,7 +18,7 @@ on:
   workflow_dispatch:
     inputs:
       REPO_BRANCH:
-        description: '大雕源码'
+        description: '（大雕源码）请选择源码分支'
         required: true
         default: 'master'
         type: choice
@@ -82,7 +82,7 @@ on:
         default: 'true'
         type: boolean
       UPDATE_FIRMWARE_ONLINE:
-        description: '增加在线更新功能/N1和晶晨系列固件打包'
+        description: '增加在线更新功能/打包Amlogic、Rockchip系列固件'
         required: false
         default: 'true'
         type: boolean
@@ -94,8 +94,8 @@ on:
 
 
 # 定时触发开启开始编译(把下面两个#去掉开启,时间设置请看定时开启编译说明)
-  schedule:
-   - cron: 35 4 */6 * *
+#  schedule:
+#   - cron: 35 4 * * *
 
 env:
   GITHUB_LINK: https://github.com/${{github.repository}}
