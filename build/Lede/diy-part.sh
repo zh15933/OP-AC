@@ -103,7 +103,6 @@ EOF
 
 # 文件共享禁用
 #
-CONFIG_PACKAGE_luci-app-samba=n
 CONFIG_PACKAGE_luci-app-samba4=n
 CONFIG_PACKAGE_luci-app-vsftpd=n
 CONFIG_PACKAGE_autosamba=n
