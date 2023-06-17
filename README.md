@@ -21,9 +21,51 @@
 ---
 
 <details>
-<summary>🆙更新说明（2023年6月3号）</summary>
+<summary>🆙更新说明（2023年6月16号）</summary>
 
 <br>
+ 
+  2023年6月16号
+ 
+ 修复个别源码不能编译N1固件的问题
+ 
+ 有些源码的【armvirt】文件夹已经改成了【armsr】，机型文件也跟着改变的，查看源码文件夹在对应源码分支的[target/linux]里面查看，要么有【armvirt】，要么就是【armsr】
+ 
+ 以前的机型文件一般为：
+ ````
+CONFIG_TARGET_armvirt=y
+CONFIG_TARGET_armvirt_64=y
+CONFIG_TARGET_armvirt_64_Default=y
+ ````
+ 
+ 现在的机型文件有些改为：
+ ````
+CONFIG_TARGET_armvirt=y
+CONFIG_TARGET_armvirt_64=y
+CONFIG_TARGET_armvirt_64_DEVICE_generic=y
+ ````
+ 
+ 如果源码文件为【armsr】的，机型文件一般为：
+ ````
+CONFIG_TARGET_armsr=y
+CONFIG_TARGET_armsr_armv8=y
+CONFIG_TARGET_armsr_armv8_DEVICE_generic=y
+ ````
+ 
+ 以上机型文件仅供参考，自己在对应源码SSH连接多看吧
+ ---
+ 
+ 2023年6月11号
+ 
+ 1、修改了清理Actions空间操作记录的时间设置方式，以前是按天来计算的，现在是按分钟计算
+ 
+ 2、修改了清理发布固件的操作方式，还是按保留个数计算，默认会自动保留【在线更新的云端】和【Amlogic/Rockchip系列打包的rootfs.tar.gz格式固件】，不被清理的，要清理就手动删除一下（6月11号11点，发现BUG，此清理方式，获取数据的时候，只能获取到前面的30个，如果你仓库的发布超过30个，就不能获取到后面的了，再加上如果你保留的个数超过30个的话，那就一直不会清理任何发布，建议超过30个的，现在保留特定需要的，其他都清理完了，然后在以后的使用当中别让发布个数超过30个就能正常使用了）
+ 
+ 4、因为要搭配清理发布操作使用，在线更新的云端名称有改变，重新编译的才能使用，以前编译的检测不到了
+ 
+ 5、增加了自动删除，因筛选CPU转换服务器而停止的工作流程
+ 
+ ---
 
  2023年6月3号
  
