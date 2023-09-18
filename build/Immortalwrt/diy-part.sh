@@ -72,8 +72,6 @@ export auto_kernel="true"
 export rootfs_size="2560"
 export kernel_usage="stable"
 
-# x86 型号只显示 CPU 型号
-# sed -i 's/${g}.*/${a}${b}${c}${d}${e}${f}${hydrid}/g' package/lean/autocore/files/x86/autocore
 
 # 修改插件名字
 sed -i 's/"终端"/"TTYD"/g' `egrep "终端" -rl ./`
