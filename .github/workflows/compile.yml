@@ -21,6 +21,8 @@ env:
   PUSH_PLUS_TOKEN: ${{ secrets.PUSH_PLUS_TOKEN }}
   TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
   TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+  WX_TOKEN: ${{ secrets.WX_TOKEN }}
+  CURL: ${{ secrets.CURL }}
   TZ: Asia/Shanghai
 
 jobs:
@@ -37,13 +39,14 @@ jobs:
         target: [Lede]
 
     steps:    
+        
     - name: 准备结束
       uses: actions/checkout@v3
 
     - name: 检测文件和对比上游版本
       run: |
         cd ${GITHUB_WORKSPACE}
-        bash <(curl -fsSL https://raw.githubusercontent.com/281677160/common/main/custom/first.sh)
+        bash <(curl -fsSL https://raw.githubusercontent.com/shidahuilang/common/main/custom/first.sh)
         if [[ -n "${{ github.event.workflow }}" ]] || [[ -n "${{ github.event.schedule }}" ]]; then
           source ${GITHUB_WORKSPACE}/build/${FOLDER_NAME}/settings.ini
         else
@@ -60,20 +63,21 @@ jobs:
       run: |
         cd ${GITHUB_WORKSPACE}
         source build/${FOLDER_NAME}/common.sh && CPU_Priority
-
-    - name: 释放Ubuntu磁盘空间
+        
+    - name: 清理空间
       uses: jlumbroso/free-disk-space@main
       with:
         # this might remove tools that are actually needed,
         # if set to "true" but frees about 6 GB
         tool-cache: true
+        
         # all of these default to true, but feel free to set to
         # "false" if necessary for your workflow
         android: true
         dotnet: true
         haskell: true
         large-packages: true
-        swap-storage: true
+        swap-storage: true       
         
     - name: 部署编译环境
       env:
@@ -84,6 +88,11 @@ jobs:
         sudo mkdir -p /${{ env.DIY_WORK }}
         sudo chown ${USER}:${GROUPS} /${{ env.DIY_WORK }}
 
+    - name: 升级rustc到1.70.0
+      run: |
+                curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain 1.70.0
+                source $HOME/.cargo/env
+                
     - name: 下载"${{matrix.target}}"源码
       working-directory: /${{ env.DIY_WORK }}
       run: |
@@ -231,3 +240,11 @@ jobs:
             curl -k --data token="${{ secrets.PUSH_PLUS_TOKEN }}" --data title="[${{ env.SOURCE }}-${{ env.TARGET_PROFILE }}]编译成功" --data "content=我亲爱的✨主人✨：您使用【${{matrix.target}}】文件夹编译【${REPO_BRANCH}分支的${{env.TARGET_PROFILE}}】固件顺利编译完成了✌️💯💐(${{env.WAREHOUSE_MAN}}仓库的#${{env.RUN_NUMBER}}号)！($(date +%Y年%m月%d号%H时%M分))" "http://www.pushplus.plus/send"
           fi
         fi
+        if [[ "${{ env.INFORMATION_NOTICE }}" == "WX" ]]; then
+          if [[ "${{steps.gitpush.outcome}}" == 'success' ]] && [[ "${{steps.compile.outcome}}" == 'success' ]]; then
+            curl -k --data token="${{ secrets.WX_TOKEN }}" --data title="开始编译【${{ env.FOLDER_NAME }}】" --data "message=🎉 主人💕：您的编译脚本成功触发【${{ env.FOLDER_NAME }}】文件夹编译【${{env.TARGET_PROFILE}}】固件中,请耐心等待...... 😋(${{env.Tongzhi_Date}})" "http://${{ secrets.CURL }}/push?token=${{ secrets.WX_TOKEN }}&"
+          else
+            curl -k --data token="${{ secrets.WX_TOKEN }}" --data title="触发启动失败" --data "message=💥主人❌ ：上游扩展错误或者脚本错误,触发启动【${{ env.FOLDER_NAME }}】失败,请点击触发脚本步骤查看详情!(${{env.Tongzhi_Date}})" "http://${{ secrets.CURL }}/push?token=${{ secrets.WX_TOKEN }}&"
+            exit 1
+          fi
+        fi  
