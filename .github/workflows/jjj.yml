@@ -1,4 +1,4 @@
-name: Immor
+name: 清理Actions空间
 on:
   workflow_dispatch:
 
