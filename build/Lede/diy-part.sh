@@ -71,6 +71,9 @@ export Cancel_running="0"                    # 取消路由器每天跑分任务
 rm -rf feeds/passwall1.*
 rm -rf feeds/passwall2.*
 rm -rf feeds/passwall3.*
+rm -rf feeds/passwall3
+rm -rf feeds/passwall2
+rm -rf feeds/passwall1
 
 # 晶晨CPU系列打包固件设置(不懂请看说明)
 export amlogic_model="s905d"
