@@ -4,7 +4,7 @@
 # 自行拉取插件之前请SSH连接进入固件配置里面确认过没有你要的插件再单独拉取你需要的插件
 # 不要一下就拉取别人一个插件包N多插件的，多了没用，增加编译错误，自己需要的才好
 
-git clone https://github.com/kenzok8/small.git package/lean/small
+
 
 
 # 后台IP设置
@@ -91,7 +91,7 @@ sed -i 's/"管理权"/"改密码"/g' `egrep "管理权" -rl ./`
 sed -i 's/"带宽监控"/"监控"/g' `egrep "带宽监控" -rl ./`
 sed -i 's/"设置向导"/"向导"/g' `egrep "设置向导" -rl ./`
 
-
+git clone https://github.com/kenzok8/small.git package/lean/small
 
 # 整理固件包时候,删除您不想要的固件或者文件,让它不需要上传到Actions空间(根据编译机型变化,自行调整删除名称)
 cat >"$CLEAR_PATH" <<-EOF
