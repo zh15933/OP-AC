@@ -9,11 +9,6 @@ rm -rf feeds/passwall2
 rm -rf feeds/passwall1
 rm -rf feeds/helloworld
 
-
-git clone https://github.com/kenzok8/small.git package/lean/small
-
-
-
 # 后台IP设置
 export Ipv4_ipaddr="192.168.5.1"            # 修改openwrt后台地址(填0为关闭)
 export Netmask_netm="255.255.255.0"         # IPv4 子网掩码（默认：255.255.255.0）(填0为不作修改)
