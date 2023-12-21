@@ -93,9 +93,11 @@ sed -i 's/"管理权"/"改密码"/g' `egrep "管理权" -rl ./`
 sed -i 's/"带宽监控"/"监控"/g' `egrep "带宽监控" -rl ./`
 sed -i 's/"设置向导"/"向导"/g' `egrep "设置向导" -rl ./`
 
-# 替换golang
-sed -i 's/CCb051df5701d4C588e3d0558f83e73e7ea0a9b165dab3e39dd2db8a6a25d03/ea9d61bab51d76e681156f69f0e0596b59722f04414b01c6e100b4b5be3a1/g' feeds/packages/lang/rust/Makefile
 
+# sed -i 's/CCb051df5701d4C588e3d0558f83e73e7ea0a9b165dab3e39dd2db8a6a25d03/ea9d61bab51d76e681156f69f0e0596b59722f04414b01c6e100b4b5be3a1/g' feeds/packages/lang/rust/Makefile
+
+
+# 替换golang
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 21.x feeds/packages/lang/golang
 
