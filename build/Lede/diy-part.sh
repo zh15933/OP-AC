@@ -91,6 +91,8 @@ sed -i 's/"设置向导"/"向导"/g' `egrep "设置向导" -rl ./`
 
 # sed -i 's/CCb051df5701d4C588e3d0558f83e73e7ea0a9b165dab3e39dd2db8a6a25d03/ea9d61bab51d76e681156f69f0e0596b59722f04414b01c6e100b4b5be3a1/g' feeds/packages/lang/rust/Makefile
 
+# 删除argon默认图片
+rm -rf feeds/danshui2/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
 
 # 替换golang
 rm -rf feeds/packages/lang/golang
