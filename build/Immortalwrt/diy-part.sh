@@ -72,6 +72,11 @@ export auto_kernel="true"
 export rootfs_size="2560"
 export kernel_usage="stable"
 
+# 替换golang
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 21.x feeds/packages/lang/golang
+
+
 
 # 修改插件名字
 sed -i 's/"终端"/"TTYD"/g' `egrep "终端" -rl ./`
