@@ -1,0 +1,14 @@
+
+config global 'global'
+	option enable '1'
+
+config user '358c3156b18949b1a86e7a1ff12abf74'
+	option log '1'
+	option enable '1'
+	option remarks 'hj'
+	option type 'SS'
+	option port '16000'
+	option password 'xiaohuihui'
+	option method 'rc4-md5'
+	option timeout '300'
+
