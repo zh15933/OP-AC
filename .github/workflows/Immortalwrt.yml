@@ -16,7 +16,7 @@ on:
       REPO_BRANCH:
         description: '天灵源码-请选择分支'
         required: true
-        default: 'master'
+        default: 'openwrt-21.02'
         type: choice
         options:
           - 'openwrt-23.05'
@@ -45,7 +45,7 @@ on:
       INFORMATION_NOTICE:
         description: 'Telegram或pushplus信息通知'
         required: true
-        default: 'Telegram'
+        default: '关闭'
         type: choice
         options:
           - '关闭'
