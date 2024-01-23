@@ -1,5 +1,3 @@
-diff --git a/feeds/danshui2/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css b/feeds/danshui2/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
-index 6d3c148..c289aae 100644
 --- a/feeds/danshui2/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
 +++ b/feeds/danshui2/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
 @@ -227,6 +227,32 @@ li {
