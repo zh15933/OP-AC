@@ -87,8 +87,8 @@ sed -i 's/"管理权"/"改密码"/g' `egrep "管理权" -rl ./`
 sed -i 's/"带宽监控"/"监控"/g' `egrep "带宽监控" -rl ./`
 sed -i 's/"设置向导"/"向导"/g' `egrep "设置向导" -rl ./`
 
-# 删除群主argon主题
-rm -rf feeds/danshui2/luci-theme-argon && git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git feeds/danshui2/luci-theme-argon
+# 更换argon主题版本
+rm -rf feeds/danshui2/luci-theme-argon && 
 
 
 # 替换golang
