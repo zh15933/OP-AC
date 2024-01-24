@@ -1,0 +1,46 @@
+diff --git a/feeds/danshui2/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css b/feeds/danshui2/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
+index 6d3c148..c289aae 100644
+--- a/feeds/danshui2/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
++++ b/feeds/danshui2/luci-theme-argon/htdocs/luci-static/argon/css/cascade.css
+@@ -227,6 +227,32 @@ li {
+ *  Login Page
+ *
+ ***************************/
++.login-container {
++  margin: auto;
++  height: 500px!important;
++  min-height: 500px!important;
++  left: 0;
++  right: 0;
++  bottom: 0;
++  margin-left: auto!important;
++  border-radius: 10px;
++}
++.login-form {
++  background-color: rgba(255, 255, 255, 0)!important;
++  border-radius: 10px;
++}
++.login-form .brand {
++  margin: 20px auto 20px 108px!important;
++}
++.input-group {
++  margin-bottom: 1rem!important;
++}
++.input-group input {
++  margin-bottom: 0!important;
++}
++.ftc {
++  bottom: 0!important;
++}
+ .login-page {
+   height: 100%;
+ }
+@@ -319,7 +345,7 @@ li {
+   font-size: 1.8rem;
+   font-weight: 700;
+   letter-spacing: 1px;
+   margin-bottom: 85px;
+   font-family: "TypoGraphica";
+   width: 420px;
+   padding: 0 0.5rem 0.1rem 0.5rem;
+   
