@@ -88,14 +88,7 @@ sed -i 's/"带宽监控"/"监控"/g' `egrep "带宽监控" -rl ./`
 sed -i 's/"设置向导"/"向导"/g' `egrep "设置向导" -rl ./`
 
 # 更换argon主题版本
-rm -rf feeds/danshui2/luci-theme-argon && git clone https://github.com/roacn/openwrt-packages.git -b lede --single-branch luci-theme-argon feeds/danshui2/luci-theme-argon
-
-# 更换argon主题控制器版本
-rm -rf feeds/danshui2/luci-app-argon-config && git clone https://github.com/roacn/openwrt-packages.git -b lede --single-branch luci-app-argon-config feeds/danshui2/luci-app-argon-config
-
-
-
-# && git clone https://github.com/zh15933/luci-theme-argon.git feeds/danshui2/luci-theme-argon
+rm -rf feeds/danshui2/luci-theme-argon && git clone https://github.com/zh15933/luci-theme-argon.git feeds/danshui2/luci-theme-argon
 
 # 替换golang
 #rm -rf feeds/packages/lang/golang
