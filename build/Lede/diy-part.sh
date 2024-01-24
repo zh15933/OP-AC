@@ -91,6 +91,8 @@ sed -i 's/"设置向导"/"向导"/g' `egrep "设置向导" -rl ./`
 rm -rf feeds/danshui2/luci-theme-argon && git clone https://github.com/zh15933/luci-theme-argon.git feeds/danshui2/luci-theme-argon
 
 
+
+
 # 替换golang
 #rm -rf feeds/packages/lang/golang
 #git clone https://github.com/sbwml/packages_lang_golang -b 21.x feeds/packages/lang/golang
