@@ -91,8 +91,8 @@ sed -i 's/"设置向导"/"向导"/g' `egrep "设置向导" -rl ./`
 rm -rf feeds/danshui2/luci-theme-argon && git clone https://github.com/zh15933/lede_argon.git feeds/danshui2/luci-theme-argon
 
 # 替换golang
-# rm -rf feeds/packages/lang/golang
-# git clone https://github.com/sbwml/packages_lang_golang -b 21.x feeds/packages/lang/golang
+ rm -rf feeds/packages/lang/golang
+ git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 
 # x86 型号只显示 CPU 型号
 sed -i 's/${g}.*/${a}${b}${c}${d}${e}${f}${hydrid}/g' package/lean/autocore/files/x86/autocore
