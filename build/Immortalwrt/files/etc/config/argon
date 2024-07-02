@@ -6,7 +6,7 @@ config global
 	option blur_dark '1'
 	option transparency '0'
 	option blur '1'
-	option primary '#FFB6C1'
-	option dark_primary '#FFB6C1'
+	option primary '#6A5ACD'
+	option dark_primary '#6A5ACD'
 	option mode 'normal'
 
