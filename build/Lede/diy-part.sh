@@ -64,6 +64,15 @@ export Delete_unnecessary_items="1"          # 个别机型内一堆其他机型
 export Disable_53_redirection="1"            # 删除DNS强制重定向53端口防火墙规则(个别源码本身不带此功能)(1为启用命令,填0为不作修改)
 export Cancel_running="0"                    # 取消路由器每天跑分任务(个别源码本身不带此功能)(1为启用命令,填0为不作修改)
 
+# x86 型号只显示 CPU 型号
+sed -i 's/${g}.*/${a}${b}${c}${d}${e}${f}${hydrid}/g' package/lean/autocore/files/x86/autocore
+
+# 更换argon主题版本
+rm -rf feeds/danshui2/luci-theme-argon && git clone https://github.com/zh15933/lede_argon.git feeds/danshui2/luci-theme-argon
+
+# 拉取mihomi(新clash插件)
+git clone https://github.com/morytyann/OpenWrt-mihomo.git package
+
 
 # 晶晨CPU系列打包固件设置(不懂请看说明)
 export amlogic_model="s905d"
@@ -87,14 +96,7 @@ sed -i 's/"管理权"/"改密码"/g' `egrep "管理权" -rl ./`
 sed -i 's/"带宽监控"/"监控"/g' `egrep "带宽监控" -rl ./`
 sed -i 's/"设置向导"/"向导"/g' `egrep "设置向导" -rl ./`
 
-# x86 型号只显示 CPU 型号
-sed -i 's/${g}.*/${a}${b}${c}${d}${e}${f}${hydrid}/g' package/lean/autocore/files/x86/autocore
 
-# 更换argon主题版本
-rm -rf feeds/danshui2/luci-theme-argon && git clone https://github.com/zh15933/lede_argon.git feeds/danshui2/luci-theme-argon
-
-# 拉取mihomi(新clash插件)
-git clone https://github.com/morytyann/OpenWrt-mihomo.git package/xhh/OpenWrt-mihomo
 
 # 单独拉取文件模板
 # git_sparse_clone master https://github.com/rmoyulong/AX6-Actions_Lede luci-theme-openwrt-2020
