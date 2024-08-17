@@ -70,8 +70,8 @@ sed -i 's/${g}.*/${a}${b}${c}${d}${e}${f}${hydrid}/g' package/lean/autocore/file
 # 更换argon主题版本
 rm -rf feeds/danshui2/luci-theme-argon && git clone https://github.com/zh15933/lede_argon.git feeds/danshui2/luci-theme-argon
 
-# 拉取mihomi(新clash插件)
-git clone https://github.com/morytyann/OpenWrt-mihomo.git package/OpenWrt-mihomo
+# 拉取mihomi(新clash插件)   不适应lede
+# git clone https://github.com/morytyann/OpenWrt-mihomo.git package/OpenWrt-mihomo
 
 
 # 晶晨CPU系列打包固件设置(不懂请看说明)
