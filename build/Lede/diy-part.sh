@@ -8,7 +8,7 @@
 # 后台IP设置
 export Ipv4_ipaddr="192.168.5.1"            # 修改openwrt后台地址(填0为关闭)
 export Netmask_netm="255.255.255.0"         # IPv4 子网掩码（默认：255.255.255.0）(填0为不作修改)
-export Op_name="OpenWrt"                # 修改主机名称为OpenWrt-123(填0为不作修改)
+export Op_name="OpenWrt-123"                # 修改主机名称为OpenWrt-123(填0为不作修改)
 
 # 内核和系统分区大小(不是每个机型都可用)
 export Kernel_partition_size="0"            # 内核分区大小,每个机型默认值不一样 (填写您想要的数值,默认一般16,数值以MB计算，填0为不作修改),如果你不懂就填0
@@ -20,8 +20,8 @@ export Default_theme="argon"                # 多主题时,选择某主题为默
 
 # 旁路由选项
 export Gateway_Settings="192.168.5.3"                 # 旁路由设置 IPv4 网关(填入您的网关IP为启用)(填0为不作修改)
-export DNS_Settings="223.5.5.5 114.114.114.114"                     # 旁路由设置 DNS(填入DNS，多个DNS要用空格分开)(填0为不作修改)
-export Broadcast_Ipv4="192.168.5.255"                   # 设置 IPv4 广播(填入您的IP为启用)(填0为不作修改)
+export DNS_Settings="223.5.5.5"                     # 旁路由设置 DNS(填入DNS，多个DNS要用空格分开)(填0为不作修改)
+export Broadcast_Ipv4="0"                   # 设置 IPv4 广播(填入您的IP为启用)(填0为不作修改)
 export Disable_DHCP="1"                     # 旁路由关闭DHCP功能(1为启用命令,填0为不作修改)
 export Disable_Bridge="1"                   # 旁路由去掉桥接模式(1为启用命令,填0为不作修改)
 export Create_Ipv6_Lan="0"                  # 爱快+OP双系统时,爱快接管IPV6,在OP创建IPV6的lan口接收IPV6信息(1为启用命令,填0为不作修改)
@@ -60,18 +60,15 @@ export Disable_autosamba="1"                 # 去掉源码默认自选的luci-a
 
 # 其他
 export Ttyd_account_free_login="1"           # 设置ttyd免密登录(1为启用命令,填0为不作修改)
-export Delete_unnecessary_items="1"          # 个别机型内一堆其他机型固件,删除其他机型的,只保留当前主机型固件(1为启用命令,填0为不作修改)
+export Delete_unnecessary_items="0"          # 个别机型内一堆其他机型固件,删除其他机型的,只保留当前主机型固件(1为启用命令,填0为不作修改)
 export Disable_53_redirection="0"            # 删除DNS强制重定向53端口防火墙规则(个别源码本身不带此功能)(1为启用命令,填0为不作修改)
 export Cancel_running="0"                    # 取消路由器每天跑分任务(个别源码本身不带此功能)(1为启用命令,填0为不作修改)
 
 # x86 型号只显示 CPU 型号
-sed -i 's/${g}.*/${a}${b}${c}${d}${e}${f}${hydrid}/g' package/lean/autocore/files/x86/autocore
+# sed -i 's/${g}.*/${a}${b}${c}${d}${e}${f}${hydrid}/g' package/lean/autocore/files/x86/autocore
 
 # 更换argon主题版本
 rm -rf feeds/danshui2/luci-theme-argon && git clone https://github.com/zh15933/lede_argon.git feeds/danshui2/luci-theme-argon
-
-# 拉取mihomi(新clash插件)   不适应lede
-# git clone https://github.com/morytyann/OpenWrt-mihomo.git package/OpenWrt-mihomo
 
 
 # 晶晨CPU系列打包固件设置(不懂请看说明)
@@ -95,11 +92,6 @@ sed -i 's/"Web 管理"/"Web管理"/g' `egrep "Web 管理" -rl ./`
 sed -i 's/"管理权"/"改密码"/g' `egrep "管理权" -rl ./`
 sed -i 's/"带宽监控"/"监控"/g' `egrep "带宽监控" -rl ./`
 sed -i 's/"设置向导"/"向导"/g' `egrep "设置向导" -rl ./`
-
-
-
-# 单独拉取文件模板
-# git_sparse_clone master https://github.com/rmoyulong/AX6-Actions_Lede luci-theme-openwrt-2020
 
 
 # 整理固件包时候,删除您不想要的固件或者文件,让它不需要上传到Actions空间(根据编译机型变化,自行调整删除名称)
