@@ -68,6 +68,9 @@ export Cancel_running="0"                    # 取消路由器每天跑分任务
 git clone https://github.com/morytyann/OpenWrt-mihomo.git package/xhh/OpenWrt-mihomo
 
 
+# CONFIG_GRUB_IMAGES is not set
+
+
 # 晶晨CPU系列打包固件设置(不懂请看说明)
 export amlogic_model="s905d"
 export amlogic_kernel="5.10.01_6.1.01"
