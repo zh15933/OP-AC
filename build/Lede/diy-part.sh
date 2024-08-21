@@ -68,7 +68,7 @@ export Cancel_running="0"                    # 取消路由器每天跑分任务
 sed -i 's/${g}.*/${a}${b}${c}${d}${e}${f}${hydrid}/g' package/lean/autocore/files/x86/autocore
 
 # 更换argon主题版本
-rm -rf feeds/danshui2/luci-theme-argon && git clone https://github.com/zh15933/lede_argon.git feeds/danshui2/luci-theme-argon
+# rm -rf feeds/danshui2/luci-theme-argon && git clone https://github.com/zh15933/lede_argon.git feeds/danshui2/luci-theme-argon
 
 
 # 晶晨CPU系列打包固件设置(不懂请看说明)
@@ -105,7 +105,11 @@ profiles.json
 openwrt-x86-64-generic-kernel.bin
 openwrt-x86-64-generic.manifest
 openwrt-x86-64-generic-squashfs-rootfs.img.gz
+openwrt-x86-64-generic-squashfs-combined.img.gz
 EOF
+
+# openwrt-x86-64-generic-squashfs-combined.img.gz
+# openwrt-x86-64-generic-squashfs-combined-efi.img.gz
 
 # 在线更新时，删除不想保留固件的某个文件，在EOF跟EOF之间加入删除代码，记住这里对应的是固件的文件路径，比如： rm -rf /etc/config/luci
 cat >>$DELETE <<-EOF
