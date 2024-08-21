@@ -105,7 +105,6 @@ profiles.json
 openwrt-x86-64-generic-kernel.bin
 openwrt-x86-64-generic.manifest
 openwrt-x86-64-generic-squashfs-rootfs.img.gz
-openwrt-x86-64-generic-squashfs-combined.img.gz
 EOF
 
 # openwrt-x86-64-generic-squashfs-combined.img.gz
