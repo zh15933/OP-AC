@@ -67,8 +67,6 @@ export Cancel_running="0"                    # 取消路由器每天跑分任务
 # 拉取mihomi(新clash插件)
 git clone https://github.com/morytyann/OpenWrt-mihomo.git package/xhh/OpenWrt-mihomo
 
-git clone https://github.com/immortalwrt/homeproxy package/xhh/homeproxy
-
 # 更换argon最新主题版本
 rm -rf feeds/danshui2/luci-theme-argon && git clone https://github.com/jerrykuku/luci-theme-argon.git feeds/danshui2/luci-theme-argon
 
