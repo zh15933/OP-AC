@@ -5,9 +5,9 @@
 rm /www/luci-static/argon/background/argon.jpg
 
 # 开机自动关闭DNS重定向   配合clash
-service dnsmasq stop
-sed -i '/dns_redirect/d' /etc/config/dhcp
-uci commit dhcp
-service dnsmasq start
+# service dnsmasq stop
+# sed -i '/dns_redirect/d' /etc/config/dhcp
+# uci commit dhcp
+# service dnsmasq start
 
 exit 0
