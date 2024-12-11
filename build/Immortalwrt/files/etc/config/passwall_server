@@ -2,12 +2,6 @@
 config global 'global'
 	option enable '1'
 
-config user 'a349624b6b4d435688bc16b1e4013de4'
-	option enable '1'
-	option remarks 'Socks '
-	option type 'Socks'
-	option port '15000'
-
 config user 'e5e69fce48174f02b36f4fcc63438ae6'
 	option enable '1'
 	option log '1'
