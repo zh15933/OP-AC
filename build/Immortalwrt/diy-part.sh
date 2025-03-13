@@ -20,7 +20,7 @@ export Default_theme="argon"                # 多主题时,选择某主题为默
 
 # 旁路由选项
 export Gateway_Settings="192.168.5.3"                 # 旁路由设置 IPv4 网关(填入您的网关IP为启用)(填0为不作修改)
-export DNS_Settings="223.5.5.5"                     # 旁路由设置 DNS(填入DNS，多个DNS要用空格分开)(填0为不作修改)
+export DNS_Settings="223.5.5.5 114.114.114.114"                     # 旁路由设置 DNS(填入DNS，多个DNS要用空格分开)(填0为不作修改)
 export Broadcast_Ipv4="0"                   # 设置 IPv4 广播(填入您的IP为启用)(填0为不作修改)
 export Disable_DHCP="1"                     # 旁路由关闭DHCP功能(1为启用命令,填0为不作修改)
 export Disable_Bridge="1"                   # 旁路由去掉桥接模式(1为启用命令,填0为不作修改)
@@ -28,7 +28,7 @@ export Create_Ipv6_Lan="0"                  # 爱快+OP双系统时,爱快接管
 
 # IPV6、IPV4 选择
 export Enable_IPV6_function="0"             # 编译IPV6固件(1为启用命令,填0为不作修改)(如果跟Create_Ipv6_Lan一起启用命令的话,Create_Ipv6_Lan命令会自动关闭)
-export Enable_IPV4_function="1"             # 编译IPV4固件(1为启用命令,填0为不作修改)(如果跟Enable_IPV6_function一起启用命令的话,此命令会自动关闭)
+export Enable_IPV4_function="0"             # 编译IPV4固件(1为启用命令,填0为不作修改)(如果跟Enable_IPV6_function一起启用命令的话,此命令会自动关闭)
 
 # 替换passwall的源码(默认luci分支)
 export PassWall_luci_branch="0"             # passwall的源码分别有【luci分支】和【luci-smartdns-new-version分支】(填0为使用luci分支,填1为使用luci-smartdns-new-version分支)
@@ -65,7 +65,7 @@ export Disable_53_redirection="0"            # 删除DNS强制重定向53端口�
 export Cancel_running="0"                    # 取消路由器每天跑分任务(个别源码本身不带此功能)(1为启用命令,填0为不作修改)
 
 # 拉取mihomi(新clash插件)
-git clone https://github.com/morytyann/OpenWrt-mihomo.git package/xhh/OpenWrt-mihomo
+git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/xhh/OpenWrt-nikki
 
 # 更换argon最新主题版本
 rm -rf feeds/danshui2/luci-theme-argon && git clone https://github.com/jerrykuku/luci-theme-argon.git feeds/danshui2/luci-theme-argon
