@@ -68,7 +68,7 @@ export Cancel_running="0"                    # 取消路由器每天跑分任务
 # git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git package/xhh/OpenWrt-nikki
 
 # 更换argon最新主题版本
-# rm -rf feeds/danshui2/luci-theme-argon && git clone https://github.com/jerrykuku/luci-theme-argon.git feeds/danshui2/luci-theme-argon
+rm -rf feeds/danshui2/luci-theme-argon && git clone https://github.com/jerrykuku/luci-theme-argon.git feeds/danshui2/luci-theme-argon
 
 # CONFIG_GRUB_IMAGES is not set
 
