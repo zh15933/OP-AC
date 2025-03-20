@@ -20,7 +20,7 @@ export Default_theme="argon"                # 多主题时,选择某主题为默
 
 # 旁路由选项
 export Gateway_Settings="192.168.5.3"                 # 旁路由设置 IPv4 网关(填入您的网关IP为启用)(填0为不作修改)
-export DNS_Settings="192.168.5.3"                     # 旁路由设置 DNS(填入DNS，多个DNS要用空格分开)(填0为不作修改)
+export DNS_Settings="192.168.5.3"                     # 旁路由设置 DNS(填入DNS，多个DNS要用空格分开)(填0为不作修改)   尽量填入你的拨号设备IP
 export Broadcast_Ipv4="192.168.5.255"                   # 设置 IPv4 广播(填入您的IP为启用)(填0为不作修改)
 export Disable_DHCP="1"                     # 旁路由关闭DHCP功能(1为启用命令,填0为不作修改)
 export Disable_Bridge="1"                   # 旁路由去掉桥接模式(1为启用命令,填0为不作修改)
