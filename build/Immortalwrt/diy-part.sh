@@ -65,7 +65,7 @@ export auto_kernel="true"
 export rootfs_size="2560"
 export kernel_usage="stable"
 
-
+git clone https://github.com/jerrykuku/luci-theme-argon.git feeds/langge2/luci-theme-argon
 
 # 修改插件名字
 sed -i 's/"终端"/"TTYD"/g' `egrep "终端" -rl ./`
