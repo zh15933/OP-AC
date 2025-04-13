@@ -9,33 +9,32 @@
 #
 #
 
-name: Official-官方
+name: Mt798x-mtk闭源
 on:
   workflow_dispatch:
     inputs:
       REPO_BRANCH:
-        description: '（官方源码）请选择源码分支'
+        description: 'mt798x源码-请选择分支'
         required: true
-        default: 'openwrt-24.10'
+        default: '2410'
         type: choice
         options:
-          - 'openwrt-24.10'
+          - '2410'
           - 'openwrt-23.05'
-          - 'openwrt-22.03'
-          - 'openwrt-21.02'
-          - 'openwrt-19.07'
-          - 'master'
-          - 'main'
+          - 'hanwckf-21.02'
       CONFIG_FILE:
-        description: '请选择配置文件'
+        description: '请选择[seed文件夹内]的配置文件'
         required: true
-        default: 'x86_64'
+        default: '360-t7-108M'
         type: choice
         options:
-          - '1907-phicomm-k3'
-          - 'aarch64'
-          - 'phicomm_k3'
-          - 'x86_64'
+          - 'glinet-gl-xe3000'
+          - 'huasifei-wh3000-emmc'
+          - '360-t7-108M'
+          - 'clt-r30b1-112M'
+          - 'cmcc-rax3000m-emmc'
+          - 'jcg-q30'
+          - 'xiaomi-redmi-router-ax6000'
       INFORMATION_NOTICE:
         description: 'Telegram或pushplus信息通知'
         required: true
@@ -108,9 +107,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [Official]
+        target: [Mt798x]
         
-        # 请勿对 target: [Official] 做任何修改
+        # 请勿对 target: [Mt798x] 做任何修改
         
     steps:
     - name: 密匙检测（密匙为空则退出）

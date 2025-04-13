@@ -34,7 +34,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [Immortalwrt]
+        target: [Lede]
 
     steps:    
     - name: 准备结束
@@ -50,16 +50,6 @@ jobs:
           source ${GITHUB_WORKSPACE}/build/${FOLDER_NAME}/relevance/settings.ini
         fi
         source ${GITHUB_WORKSPACE}/build/${{ env.FOLDER_NAME }}/common.sh && Diy_menu1
-
-    - name: 清理因转换CPU而停止的工作流程
-      run: |
-        cd ${GITHUB_WORKSPACE}
-        source build/${FOLDER_NAME}/common.sh && Diy_delruns
-
-    - name: CPU检测
-      run: |
-        cd ${GITHUB_WORKSPACE}
-        source build/${FOLDER_NAME}/common.sh && CPU_Priority
 
     - name: 释放Ubuntu磁盘空间
       uses: endersonmenezes/free-disk-space@v2
@@ -147,9 +137,9 @@ jobs:
         echo "date=$(date "+%Y%m%d%H%M%S")" >> ${GITHUB_ENV}
         source ${BUILD_PATH}/common.sh && firmware_jiance
         
-    - name: 自动打包Amlogic_Rockchip系列固件
+    - name: 自动打包aarch64系列固件
       if: steps.compile.outcome == 'success' && env.PACKAGING_FIRMWARE == 'true'
-      uses: ncipollo/release-action@main
+      uses: ncipollo/release-action@v1
       with:
         name: rootfs.tar.gz
         tag: targz
