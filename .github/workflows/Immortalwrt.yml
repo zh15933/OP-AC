@@ -45,11 +45,11 @@ on:
       RETAIN_MINUTE:
         description: '清理[X]分钟之后的所有操作记录(最低30)'
         required: true
-        default: '10080'
+        default: '30'
       KEEP_LATEST:
         description: '清理Releases,保留[X]个Releases不被清理'
         required: true
-        default: '30'
+        default: '3'
       SSH_ACTION:
         description: 'SSH远程配置固件'
         required: false
@@ -78,8 +78,8 @@ on:
 
 
 # 定时触发开启开始编译(把下面两个#去掉开启,时间设置请看定时开启编译说明)
-#  schedule:
-#   - cron: 35 18 * * *
+  schedule:
+   - cron: 0 9 */5 * *
 
 env:
   GIT_REPOSITORY: ${{github.repository}}
