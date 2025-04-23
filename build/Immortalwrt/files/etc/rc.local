@@ -1,0 +1,13 @@
+# Put your custom commands here that should be executed once
+# the system init finished. By default this file does nothing.
+
+# 开机删除argon主题默认图片
+rm /www/luci-static/argon/background/argon.jpg
+
+# 开机自动关闭DNS重定向   配合nikki
+# service dnsmasq stop
+# sed -i '/dns_redirect/d' /etc/config/dhcp
+# uci commit dhcp
+# service dnsmasq start
+
+exit 0
