@@ -42,7 +42,7 @@ on:
       RETAIN_MINUTE:
         description: '清理[X]分钟之后的所有操作记录(最低30)'
         required: true
-        default: '1000'
+        default: '30'
       KEEP_LATEST:
         description: '清理Releases,保留[X]个Releases不被清理'
         required: true
