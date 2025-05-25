@@ -16,7 +16,7 @@ on:
       REPO_BRANCH:
         description: '天灵源码-请选择分支'
         required: true
-        default: 'openwrt-23.05'
+        default: 'openwrt-24.10'
         type: choice
         options:
           - 'openwrt-24.10'
@@ -65,7 +65,7 @@ on:
       CACHEWRTBUILD_SWITCH:
         description: '缓存加速编译'
         required: false
-        default: 'true'
+        default: 'false'
         type: boolean
       UPDATE_FIRMWARE_ONLINE:
         description: '在线更新固/打包aarch64系列为img固件'
@@ -75,8 +75,8 @@ on:
 
 
 # 定时触发开启开始编译(把下面两个#去掉开启,时间设置请看定时开启编译说明)
-#  schedule:
-#   - cron: 35 18 * * *
+  schedule:
+   - cron: 0 9 */5 * *
 
 env:
   GIT_REPOSITORY: ${{github.repository}}
