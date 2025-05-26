@@ -76,8 +76,8 @@ on:
 
 # 如若启动定时编译的话,配置文件是设置对应文件夹内的settings.ini文件
 # 定时触发开启开始编译(把下面两个#去掉开启,时间设置请看定时开启编译说明)
-#  schedule:
-#   - cron: 35 18 * * *
+  schedule:
+   - cron: 0 9 */5 * *
 
 env:
   GIT_REPOSITORY: ${{github.repository}}
@@ -146,7 +146,7 @@ jobs:
       uses: danshui-git/delete-releases-workflows@main
       with:
         delete_releases: true
-        prerelease_option: all
+        prerelease_option: 全部
         releases_keep_keyword: targz/Update
         releases_keep_latest: ${{ env.KEEP_RELESAES }}
         delete_tags: true
