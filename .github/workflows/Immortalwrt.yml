@@ -42,8 +42,8 @@ on:
       KEEP_WORKFLOWS:
         description: '清理workflows,保留[X]个runs不被清理'
         required: true
-        default: '6'
-      KEEP_RELESAES:
+        default: '30'
+      KEEP_RELEASES:
         description: '清理Releases,保留[X]个Releases不被清理'
         required: true
         default: '30'
@@ -65,7 +65,7 @@ on:
       CACHEWRTBUILD_SWITCH:
         description: '缓存加速编译'
         required: false
-        default: 'false'
+        default: 'true'
         type: boolean
       UPDATE_FIRMWARE_ONLINE:
         description: '在线更新固/打包aarch64系列为img固件'
@@ -76,8 +76,8 @@ on:
 
 # 如若启动定时编译的话,配置文件是设置对应文件夹内的settings.ini文件
 # 定时触发开启开始编译(把下面两个#去掉开启,时间设置请看定时开启编译说明)
-  schedule:
-   - cron: 0 9 */5 * *
+#  schedule:
+#   - cron: 35 18 * * *
 
 env:
   GIT_REPOSITORY: ${{github.repository}}
@@ -146,9 +146,9 @@ jobs:
       uses: danshui-git/delete-releases-workflows@main
       with:
         delete_releases: true
-        prerelease_option: 全部
+        prerelease_option: all
         releases_keep_keyword: targz/Update
-        releases_keep_latest: ${{ env.KEEP_RELESAES }}
+        releases_keep_latest: ${{ env.KEEP_RELEASES }}
         delete_tags: true
         max_releases_fetch: 300
         delete_workflows: true
