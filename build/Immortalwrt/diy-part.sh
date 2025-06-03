@@ -77,9 +77,6 @@ grep -rl '"Web 管理"' . | xargs -r sed -i 's?"Web 管理"?"Web管理"?g'
 grep -rl '"管理权"' . | xargs -r sed -i 's?"管理权"?"改密码"?g'
 grep -rl '"带宽监控"' . | xargs -r sed -i 's?"带宽监控"?"监控"?g'
 
-###### 更换argon主题控制器版本
-rm -rf feeds/dstheme/luci-app-argon-config && git clone https://github.com/jerrykuku/luci-theme-argon.git feeds/dstheme/luci-app-argon-config
-
 # 整理固件包时候,删除您不想要的固件或者文件,让它不需要上传到Actions空间(根据编译机型变化,自行调整删除名称)
 cat >"$CLEAR_PATH" <<-EOF
 packages
