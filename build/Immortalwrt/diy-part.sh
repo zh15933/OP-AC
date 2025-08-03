@@ -68,6 +68,9 @@ export kernel_usage="stable"
 ## 更换最新nikki插件版本
 rm -rf feeds/danshui/luci-app-nikki && git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git feeds/danshui/luci-app-nikki
 
+## 更换最新 passwall 插件版本
+rm -rf feeds/danshui/luci-app-passwall && git clone https://github.com/xiaorouji/openwrt-passwall.git feeds/danshui/luci-app-passwall
+
 # 修改插件名字
 grep -rl '"终端"' . | xargs -r sed -i 's?"终端"?"TTYD"?g'
 grep -rl '"TTYD 终端"' . | xargs -r sed -i 's?"TTYD 终端"?"TTYD"?g'
