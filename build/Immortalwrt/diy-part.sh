@@ -71,7 +71,7 @@ rm -rf feeds/danshui/luci-app-nikki && git clone https://github.com/nikkinikki-o
 ## 更换最新 passwall 插件版本
 rm -rf feeds/danshui/luci-app-passwall && git clone https://github.com/xiaorouji/openwrt-passwall.git feeds/danshui/luci-app-passwall
 
-## 拉取最新 passwall 插件版本
+## 拉取最新 momo 插件版本
 git clone https://github.com/nikkinikki-org/OpenWrt-momo.git feeds/danshui/OpenWrt-momo
 
 # 修改插件名字
