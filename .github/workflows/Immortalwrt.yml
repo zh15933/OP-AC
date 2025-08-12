@@ -30,6 +30,7 @@ on:
         options:
           - 'x86_64'
           - 'armsr_rootfs_tar_gz'
+          - 'x86_64_momo'
       INFORMATION_NOTICE:
         description: 'Telegram或pushplus信息通知'
         required: true
