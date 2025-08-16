@@ -69,10 +69,20 @@ export kernel_usage="stable"
 rm -rf feeds/danshui/luci-app-nikki && git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git feeds/danshui/luci-app-nikki
 
 ## 更换最新 passwall 插件版本
-rm -rf feeds/danshui/luci-app-passwall && git clone https://github.com/xiaorouji/openwrt-passwall.git feeds/danshui/luci-app-passwall
+rm -rf feeds/danshui/luci-app-passwall
+echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" > feeds.conf.default
+echo "src-git passwall_luci https://github.com/xiaorouji/openwrt-passwall.git;main" >> feeds.conf.default
+
+#rm -rf feeds/danshui/luci-app-passwall && git clone https://github.com/xiaorouji/openwrt-passwall.git feeds/danshui/luci-app-passwall
 
 ## 拉取最新 momo 插件版本
 git clone https://github.com/nikkinikki-org/OpenWrt-momo.git feeds/danshui/OpenWrt-momo
+
+## 更换最新 argon 主题版本
+rm -rf package/luci-theme-argon && git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon
+
+## 强行加入argon主题控制插件
+sed -i 's/# CONFIG_PACKAGE_luci-app-argon-config is not set/CONFIG_PACKAGE_luci-app-argon-config=y/' .config
 
 # 修改插件名字
 grep -rl '"终端"' . | xargs -r sed -i 's?"终端"?"TTYD"?g'
