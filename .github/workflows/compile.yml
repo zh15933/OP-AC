@@ -74,6 +74,11 @@ jobs:
     - name: 运行自定义文件和其他
       uses: 281677160/common@need
         
+    - name: 加入 Argon 主题配置
+      run: |
+        cd openwrt
+        sed -i 's/# CONFIG_PACKAGE_luci-app-argon-config is not set/CONFIG_PACKAGE_luci-app-argon-config=y/' .config
+
     - name: 编译信息
       continue-on-error: true
       if: env.COMPILATION_INFORMATION == 'true'
