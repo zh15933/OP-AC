@@ -69,11 +69,7 @@ export kernel_usage="stable"
 rm -rf feeds/danshui/luci-app-nikki && git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git feeds/danshui/luci-app-nikki
 
 ## 更换最新 passwall 插件版本
-rm -rf feeds/danshui/luci-app-passwall
-echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" > feeds.conf.default
-echo "src-git passwall_luci https://github.com/xiaorouji/openwrt-passwall.git;main" >> feeds.conf.default
-
-#rm -rf feeds/danshui/luci-app-passwall && git clone https://github.com/xiaorouji/openwrt-passwall.git feeds/danshui/luci-app-passwall
+rm -rf feeds/danshui/luci-app-passwall && git clone https://github.com/xiaorouji/openwrt-passwall.git feeds/danshui/luci-app-passwall
 
 ## 拉取最新 momo 插件版本
 git clone https://github.com/nikkinikki-org/OpenWrt-momo.git feeds/danshui/OpenWrt-momo
