@@ -9,7 +9,7 @@ config user 'e5e69fce48174f02b36f4fcc63438ae6'
 	option type 'SS'
 	option port '16000'
 	option password 'xiaohuihui'
-	option method 'aes-128-gcm'
+	option method 'aes-256-gcm'
 	option timeout '300'
 	option tcp_fast_open '1'
 
