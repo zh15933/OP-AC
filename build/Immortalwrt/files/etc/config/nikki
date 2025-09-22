@@ -2,7 +2,6 @@
 config status 'status'
 
 config config 'config'
-	option init '1'
 	option enabled '0'
 	option start_delay '3'
 	option scheduled_restart '0'
@@ -56,6 +55,7 @@ config mixin 'mixin'
 	option rule '0'
 	option rule_provider '0'
 	option mixin_file_content '0'
+	option ui_path 'ui'
 
 config hosts
 	option enabled '0'
