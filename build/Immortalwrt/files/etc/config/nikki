@@ -7,14 +7,7 @@ config config 'config'
 	option scheduled_restart '0'
 	option cron_expression '0 3 * * *'
 	option test_profile '1'
-	option fast_reload '0'
 	option core_only '0'
-
-config env 'env'
-	option disable_loopback_detector '0'
-	option disable_quic_go_gso '0'
-	option disable_quic_go_ecn '0'
-	option skip_system_ipv6_check '0'
 
 config mixin 'mixin'
 	option log_level 'warning'
@@ -55,6 +48,7 @@ config mixin 'mixin'
 	option rule '0'
 	option rule_provider '0'
 	option mixin_file_content '0'
+	option ui_path 'ui'
 
 config hosts
 	option enabled '0'
@@ -121,8 +115,8 @@ config sniff
 
 config proxy 'proxy'
 	option enabled '1'
-	option tcp_mode 'redirect'
-	option udp_mode 'tun'
+	option tcp_mode 'tproxy'
+	option udp_mode 'tproxy'
 	option ipv4_dns_hijack '1'
 	option ipv6_dns_hijack '1'
 	option ipv4_proxy '1'
@@ -159,6 +153,7 @@ config proxy 'proxy'
 	option proxy_udp_dport '123 443 8443'
 	option tun_timeout '30'
 	option tun_interval '1'
+	option bypass_china_mainland_ip6 '1'
 
 config router_access_control
 	option enabled '1'
@@ -204,8 +199,17 @@ config routing 'routing'
 	option tun_route_table '81'
 	option cgroup_id '0x12061206'
 	option cgroup_name 'nikki'
+	option tproxy_fw_mask '0xFF'
+	option tun_fw_mask '0xFF'
 
 config editor 'editor'
 
 config log 'log'
+
+config procd 'procd'
+	option fast_reload '0'
+	option env_disable_loopback_detector '0'
+	option env_disable_quic_go_gso '0'
+	option env_disable_quic_go_ecn '0'
+	option env_skip_system_ipv6_check '0'
 
