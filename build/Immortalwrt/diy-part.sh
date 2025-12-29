@@ -93,14 +93,6 @@ else
     echo "❌ 错误：未找到目标文件！请检查路径或源码结构。"
 fi
 
-# --- 自定义插件处理结束 ---
-
-## 拉取最新 momo 插件版本
-rm -rf feeds/danshui/OpenWrt-momo
-git clone https://github.com/nikkinikki-org/OpenWrt-momo.git feeds/danshui/OpenWrt-momo
-
-
-
 ## 更换最新 passwall 插件版本
 ## rm -rf feeds/danshui/luci-app-passwall && git clone https://github.com/xiaorouji/openwrt-passwall.git feeds/danshui/luci-app-passwall
 
