@@ -65,8 +65,41 @@ export auto_kernel="true"
 export rootfs_size="512/2560"
 export kernel_usage="stable"
 
-## 更换最新nikki插件版本
-rm -rf feeds/danshui/luci-app-nikki && git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git feeds/danshui/luci-app-nikki
+## 更换最新 nikki 插件版本
+# 先删除旧目录，确保拉取的是最新源码
+rm -rf feeds/danshui/luci-app-nikki
+
+echo "正在从 GitHub 获取最新的 nikki 插件源码..."
+git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git feeds/danshui/luci-app-nikki
+
+# 定位需要修改的文件路径
+NIKKI_INIT="feeds/danshui/luci-app-nikki/nikki/files/uci-defaults/init.sh"
+
+echo "🚀 准备修改 nikki 插件的随机密码逻辑..."
+
+# 检查文件是否存在并执行修改
+if [ -f "$NIKKI_INIT" ]; then
+    echo "✅ 成功找到目标文件: $NIKKI_INIT"
+    
+    # 核心修改：将 random=$(awk...) 替换为 random=""
+    # 注意：这里使用了正则匹配，兼容性更好
+    sed -i 's/random=\$(awk .*)/random=""/g' "$NIKKI_INIT"
+    
+    # 验证修改结果并显示到日志
+    CHECK_RESULT=$(grep "random=" "$NIKKI_INIT")
+    echo "✨ 恭喜！代码修改成功，当前配置为: $CHECK_RESULT"
+    echo "💡 提示：该操作已取消随机密码生成，固件安装后 api_secret 将为空。"
+else
+    echo "❌ 错误：未找到目标文件！请检查路径或源码结构。"
+fi
+
+# --- 自定义插件处理结束 ---
+
+## 拉取最新 momo 插件版本
+rm -rf feeds/danshui/OpenWrt-momo
+git clone https://github.com/nikkinikki-org/OpenWrt-momo.git feeds/danshui/OpenWrt-momo
+
+
 
 ## 更换最新 passwall 插件版本
 ## rm -rf feeds/danshui/luci-app-passwall && git clone https://github.com/xiaorouji/openwrt-passwall.git feeds/danshui/luci-app-passwall
