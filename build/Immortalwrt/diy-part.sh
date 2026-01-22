@@ -65,6 +65,26 @@ export auto_kernel="true"
 export rootfs_size="512/2560"
 export kernel_usage="stable"
 
+# 定位需要修改的文件路径
+NIKKI_INIT="feeds/danshui/luci-app-nikki/nikki/files/uci-defaults/init.sh"
+
+echo "🚀 准备修改 nikki 插件的随机密码逻辑..."
+
+# 检查文件是否存在并执行修改
+if [ -f "$NIKKI_INIT" ]; then
+    echo "✅ 成功找到目标文件: $NIKKI_INIT"
+    
+    # 核心修改：将 random=$(awk...) 替换为 random=""
+    # 注意：这里使用了正则匹配，兼容性更好
+    sed -i 's/random=\$(awk .*)/random=""/g' "$NIKKI_INIT"
+    
+    # 验证修改结果并显示到日志
+    CHECK_RESULT=$(grep "random=" "$NIKKI_INIT")
+    echo "✨ 恭喜！代码修改成功，当前配置为: $CHECK_RESULT"
+    echo "💡 提示：该操作已取消随机密码生成，固件安装后 api_secret 将为空。"
+else
+    echo "❌ 错误：未找到目标文件！请检查路径或源码结构。"
+fi
 
 # 修改插件名字
 grep -rl '"终端"' . | xargs -r sed -i 's?"终端"?"TTYD"?g'
