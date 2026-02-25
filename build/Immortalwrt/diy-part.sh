@@ -65,12 +65,11 @@ export auto_kernel="true"
 export rootfs_size="512/2560"
 export kernel_usage="stable"
 
-# =========================================================
-# 1. 环境修正 (Golang 升级至最新 26.x)
-# =========================================================
-# 强制替换 Golang 版本为 26.x，适配 2026 年最新的插件编译需求
+# 升级 Golang 26.x 
+echo "🛠️ 正在升级 Golang 环境至 26.x..."
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
+echo "✅ Golang 环境已更新！"
 
 # 定位需要修改的文件路径
 NIKKI_INIT="feeds/danshui/luci-app-nikki/nikki/files/uci-defaults/init.sh"
