@@ -86,6 +86,25 @@ else
     echo "❌ 错误：未找到目标文件！请检查路径或源码结构。"
 fi
 
+# 创建固件存放规则数据的目录 (确保在源码根目录下的 files)
+mkdir -p files/usr/share/v2ray
+mkdir -p files/etc/v2ray
+
+echo "🌐 正在下载 GeoIP/GeoSite 数据包..."
+
+# 下载 GeoIP (增加 -s 保持日志整洁，-f 遇错停止，-L 跟随重定向)
+curl -sL -o files/usr/share/v2ray/geoip.dat https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat || echo "❌ GeoIP 下载失败"
+
+# 下载 GeoSite
+curl -sL -o files/usr/share/v2ray/geosite.dat https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat || echo "❌ GeoSite 下载失败"
+
+# 创建软链接 (使用相对路径软链更稳妥)
+ln -sf /usr/share/v2ray/geoip.dat files/etc/v2ray/geoip.dat
+ln -sf /usr/share/v2ray/geosite.dat files/etc/v2ray/geosite.dat
+
+echo "✅ 数据包预制完成！"
+
+
 # 修改插件名字
 grep -rl '"终端"' . | xargs -r sed -i 's?"终端"?"TTYD"?g'
 grep -rl '"TTYD 终端"' . | xargs -r sed -i 's?"TTYD 终端"?"TTYD"?g'
