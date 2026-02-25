@@ -10,14 +10,14 @@
 #
 
 name: Immortalwrt-天灵
-于:
+on:
   workflow_dispatch:
     inputs:
       REPO_BRANCH:
         description: '天灵源码-请选择分支'
         required: true
-        默认: 'openwrt-24.10'
-        输入: choice
+        default: 'openwrt-24.10'
+        type: choice
         options:
           - 'openwrt-24.10'
           - 'openwrt-23.05'
@@ -25,16 +25,16 @@ name: Immortalwrt-天灵
       CONFIG_FILE:
         description: '请选择[seed文件夹内]的配置文件'
         required: true
-        默认: 'x86_64'
-        输入: choice
+        default: 'x86_64'
+        type: choice
         options:
           - 'x86_64'
           - 'x86_64_2'
       INFORMATION_NOTICE:
         description: 'Telegram或pushplus信息通知'
         required: true
-        默认: '关闭'
-        输入: choice
+        default: '关闭'
+        type: choice
         options:
           - '关闭'
           - 'Telegram'
@@ -42,36 +42,36 @@ name: Immortalwrt-天灵
       KEEP_WORKFLOWS:
         description: '清理workflows,保留[X]个runs不被清理'
         required: true
-        默认: '15'
+        default: '15'
       KEEP_RELEASES:
         description: '清理Releases,保留[X]个Releases不被清理'
         required: true
-        默认: '15'
+        default: '15'
       SSH_ACTION:
         description: 'SSH远程配置固件'
         required: false
-        默认: 'false'
-        输入: boolean
+        default: 'false'
+        type: boolean
       UPLOAD_FIRMWARE:
         description: '上传固件到 Github Artifacts'
         required: false
-        默认: 'true'
-        输入: boolean
+        default: 'true'
+        type: boolean
       UPLOAD_RELEASE:
         description: '发布固件到 Github Releases'
         required: false
-        默认: 'false'
-        输入: boolean
+        default: 'false'
+        type: boolean
       CACHEWRTBUILD_SWITCH:
         description: '缓存加速编译'
         required: false
-        默认: 'true'
-        输入: boolean
+        default: 'true'
+        type: boolean
       UPDATE_FIRMWARE_ONLINE:
         description: '在线更新固/打包aarch64系列为img固件'
         required: false
-        默认: 'true'
-        输入: boolean
+        default: 'true'
+        type: boolean
 
 
 # 如若启动定时编译的话,配置文件是设置对应文件夹内的settings.ini文件
