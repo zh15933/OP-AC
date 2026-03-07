@@ -65,30 +65,47 @@ export auto_kernel="true"
 export rootfs_size="512/2560"
 export kernel_usage="stable"
 
-#删除过时nikki 并重新拉取
+echo "==============================================="
+echo "🔍 步骤 1: 更新 Nikki 源码"
+echo "==============================================="
+
+# 删除旧版并克隆
 rm -rf feeds/danshui/luci-app-nikki
 git clone https://github.com/nikkinikki-org/OpenWrt-nikki.git feeds/danshui/luci-app-nikki
 
-# 定位需要修改的文件路径
+if [ $? -eq 0 ]; then
+    echo "✅ 源码拉取成功"
+else
+    echo "❌ 源码拉取失败，请检查网络" && exit 1
+fi
+
+echo ""
+echo "==============================================="
+echo "🛠️  步骤 2: 移除 面板API 随机密码逻辑"
+echo "==============================================="
+
+# 定义目标文件路径
 NIKKI_INIT="feeds/danshui/luci-app-nikki/nikki/files/uci-defaults/init.sh"
 
-echo "🚀 准备修改 nikki 插件的随机密码逻辑..."
-
-# 检查文件是否存在并执行修改
 if [ -f "$NIKKI_INIT" ]; then
-    echo "✅ 成功找到目标文件: $NIKKI_INIT"
+    echo "🎯 找到目标文件: $NIKKI_INIT"
     
-    # 核心修改：将 random=$(awk...) 替换为 random=""
-    # 注意：这里使用了正则匹配，兼容性更好
-    sed -i 's/random=\$(awk .*)/random=""/g' "$NIKKI_INIT"
+    # 执行替换：将 random=$(...) 替换为 random=""
+    # 这样编译出的固件默认 api_secret 就会为空，方便直接登录
+    sed -i 's/random=\$(awk.*)/random=""/g' "$NIKKI_INIT"
     
-    # 验证修改结果并显示到日志
-    CHECK_RESULT=$(grep "random=" "$NIKKI_INIT")
-    echo "✨ 恭喜！代码修改成功，当前配置为: $CHECK_RESULT"
-    echo "💡 提示：该操作已取消随机密码生成，固件安装后 api_secret 将为空。"
+    # 验证修改
+    CHECK_RESULT=$(grep "random=\"" "$NIKKI_INIT")
+    if [ -n "$CHECK_RESULT" ]; then
+        echo "✨ 代码修改成功！当前配置为: $CHECK_RESULT"
+        echo "💡 提示：固件安装后 api_secret 将为空。"
+    else
+        echo "⚠️  警告：sed 替换可能未生效，请手动核对文件内容。"
+    fi
 else
-    echo "❌ 错误：未找到目标文件！请检查路径或源码结构。"
+    echo "❌ 错误：未找到目标文件！请确认插件路径是否正确。"
 fi
+echo "==============================================="
 
 # 修改插件名字
 grep -rl '"终端"' . | xargs -r sed -i 's?"终端"?"TTYD"?g'
