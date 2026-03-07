@@ -1,8 +1,103 @@
 CONFIG_TARGET_x86=y
 CONFIG_TARGET_x86_64=y
 CONFIG_TARGET_x86_64_DEVICE_generic=y
+# CONFIG_GRUB_EFI_IMAGES is not set
 CONFIG_GRUB_IMAGES=y
 CONFIG_PACKAGE_auto-scripts=y
+# CONFIG_PACKAGE_autosamba is not set
+# CONFIG_PACKAGE_coreutils is not set
+# CONFIG_PACKAGE_dns2socks is not set
+# CONFIG_PACKAGE_dns2tcp is not set
+# CONFIG_PACKAGE_dnsmasq_full_dhcpv6 is not set
+CONFIG_PACKAGE_dnsmasq_full_nftset=y
+# CONFIG_PACKAGE_etherwake is not set
+# CONFIG_PACKAGE_firewall is not set
+CONFIG_PACKAGE_firewall4=y
+# CONFIG_PACKAGE_grub2-efi is not set
+# CONFIG_PACKAGE_ip6tables is not set
+# CONFIG_PACKAGE_iptables-mod-conntrack-extra is not set
+# CONFIG_PACKAGE_iptables-mod-fullconenat is not set
+# CONFIG_PACKAGE_iptables-mod-iprange is not set
+# CONFIG_PACKAGE_iptables-mod-socket is not set
+CONFIG_PACKAGE_jansson=y
+# CONFIG_PACKAGE_kmod-crypto-ccm is not set
+# CONFIG_PACKAGE_kmod-crypto-cmac is not set
+# CONFIG_PACKAGE_kmod-crypto-des is not set
+# CONFIG_PACKAGE_kmod-crypto-md4 is not set
+# CONFIG_PACKAGE_kmod-crypto-md5 is not set
+# CONFIG_PACKAGE_kmod-crypto-sha256 is not set
+# CONFIG_PACKAGE_kmod-fs-ksmbd is not set
+CONFIG_PACKAGE_kmod-inet-diag=y
+# CONFIG_PACKAGE_kmod-ipt-conntrack-extra is not set
+# CONFIG_PACKAGE_kmod-ipt-fullconenat is not set
+# CONFIG_PACKAGE_kmod-ipt-iprange is not set
+# CONFIG_PACKAGE_kmod-ipt-socket is not set
+# CONFIG_PACKAGE_kmod-nf-conntrack-netlink is not set
+CONFIG_PACKAGE_kmod-nft-core=y
+CONFIG_PACKAGE_kmod-nft-fib=y
+CONFIG_PACKAGE_kmod-nft-fullcone=y
+CONFIG_PACKAGE_kmod-nft-nat=y
+CONFIG_PACKAGE_kmod-nft-offload=y
+CONFIG_PACKAGE_kmod-nft-socket=y
+CONFIG_PACKAGE_kmod-nft-tproxy=y
+# CONFIG_PACKAGE_kmod-oid-registry is not set
+# CONFIG_PACKAGE_ksmbd-server is not set
+# CONFIG_PACKAGE_libcares is not set
+# CONFIG_PACKAGE_libev is not set
+# CONFIG_PACKAGE_libmbedtls is not set
 CONFIG_PACKAGE_libnetsnmp=y
+CONFIG_PACKAGE_libnftnl=y
+# CONFIG_PACKAGE_libnl-core is not set
+# CONFIG_PACKAGE_libnl-genl is not set
+# CONFIG_PACKAGE_libpcap is not set
+# CONFIG_PACKAGE_libpcre2 is not set
+# CONFIG_PACKAGE_libsodium is not set
+# CONFIG_PACKAGE_libstdcpp is not set
+# CONFIG_PACKAGE_libuci-lua is not set
+# CONFIG_PACKAGE_libudns is not set
+# CONFIG_PACKAGE_lua-neturl is not set
+# CONFIG_PACKAGE_luci-app-accesscontrol is not set
+# CONFIG_PACKAGE_luci-app-arpbind is not set
+# CONFIG_PACKAGE_luci-app-autoreboot is not set
+# CONFIG_PACKAGE_luci-app-ddns is not set
+# CONFIG_PACKAGE_luci-app-ksmbd is not set
+CONFIG_PACKAGE_luci-app-nikki=y
+# CONFIG_PACKAGE_luci-app-nlbwmon is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_Iptables_Transparent_Proxy is not set
+CONFIG_PACKAGE_luci-app-ssr-plus_Nftables_Transparent_Proxy=y
+# CONFIG_PACKAGE_luci-app-upnp is not set
+# CONFIG_PACKAGE_luci-app-vlmcsd is not set
+# CONFIG_PACKAGE_luci-app-vsftpd is not set
+# CONFIG_PACKAGE_luci-app-wol is not set
+CONFIG_PACKAGE_luci-i18n-nikki-zh-cn=y
+CONFIG_PACKAGE_luci-theme-bootstrap=y
+# CONFIG_PACKAGE_microsocks is not set
+# CONFIG_PACKAGE_miniupnpd is not set
+# CONFIG_PACKAGE_mosdns is not set
+CONFIG_PACKAGE_nano=y
+CONFIG_PACKAGE_nftables-json=y
+CONFIG_PACKAGE_nikki=y
+# CONFIG_PACKAGE_nlbwmon is not set
+# CONFIG_PACKAGE_nping is not set
+# CONFIG_PACKAGE_odhcp6c is not set
+# CONFIG_PACKAGE_odhcpd-ipv6only is not set
 CONFIG_PACKAGE_openssh-sftp-server=y
+# CONFIG_PACKAGE_resolveip is not set
+# CONFIG_PACKAGE_shadowsocks-libev-config is not set
+# CONFIG_PACKAGE_shadowsocks-libev-ss-server is not set
+# CONFIG_PACKAGE_shadowsocks-rust-sslocal is not set
+# CONFIG_PACKAGE_shadowsocksr-libev-ssr-check is not set
+# CONFIG_PACKAGE_shadowsocksr-libev-ssr-local is not set
+# CONFIG_PACKAGE_shadowsocksr-libev-ssr-redir is not set
+# CONFIG_PACKAGE_shadowsocksr-libev-ssr-server is not set
+# CONFIG_PACKAGE_simple-obfs-client is not set
 CONFIG_PACKAGE_snmpd=y
+# CONFIG_PACKAGE_tcping is not set
+# CONFIG_PACKAGE_vlmcsd is not set
+# CONFIG_PACKAGE_vsftpd-alt is not set
+# CONFIG_PACKAGE_wsdd2 is not set
+# CONFIG_PACKAGE_xray-core is not set
+CONFIG_PACKAGE_yq=y
+CONFIG_TARGET_KERNEL_PARTSIZE=32
+CONFIG_TARGET_ROOTFS_PARTSIZE=500
