@@ -23,7 +23,7 @@ jobs:
   build:
     name: 编译 "${{matrix.target}}"
     runs-on: ubuntu-22.04
-    if: ${{ github.event.repository.owner.id }} == ${{ github.event.sender.id }}
+    if: github.event.repository.owner.id == github.event.sender.id
     
     env:
       FOLDER_NAME: ${{ matrix.target }}
@@ -65,8 +65,28 @@ jobs:
       run: |
         git clone -q -b "${REPO_BRANCH}" --single-branch "${REPO_URL}" openwrt
         ln -sf /${{ env.DIY_WORK }}/openwrt ${GITHUB_WORKSPACE}/openwrt
+
+        # --- 以下是新增的 Nikki 处理逻辑 ---
+        cd openwrt
+        if [ "${{ matrix.target }}" = "Lede" ]; then
+          echo "检测到 LEDE 环境，正在预清理旧版 Nikki..."
+          
+          # 1. 强力删除所有旧版同名目录
+          find . -type d -name "luci-app-nikki" -exec rm -rf {} +
+          find . -type d -name "nikki" -exec rm -rf {} +
+
+          # 2. 拉取最新官方仓库源码到 package/community（优先级最高）
+          mkdir -p package/community
+          git clone --depth 1 https://github.com/nikkinikki-org/openwrt-nikki.git package/community/luci-app-nikki
+          
+          echo "最新版 Nikki 源码已注入"
+        fi
+        cd ..
+        # --- 以上逻辑结束 ---
+
         bash ${{ env.COMMON_SH }} Diy_feedsconf
-    
+        
+        
     - name: 公告
       continue-on-error: true
       uses: 281677160/common@message
