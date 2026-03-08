@@ -1,0 +1,12 @@
+
+config global
+	option primary '#FF6347'
+	option dark_primary '#FF6347'
+	option blur '1'
+	option blur_dark '1'
+	option transparency '0'
+	option transparency_dark '0'
+	option mode 'normal'
+	option bing_background '0'
+	option save '保存更改'
+
