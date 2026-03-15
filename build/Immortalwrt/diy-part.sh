@@ -73,6 +73,18 @@ echo "✅ Golang 环境已更新！"
 
 echo ""
 echo "==============================================="
+echo "🛠️  步骤 1: 清理并重新拉取插件仓库"
+echo "==============================================="
+# 删除旧目录
+rm -rf feeds/danshui/luci-app-nikki/
+echo "🗑️  已清理旧目录"
+
+# 重新拉取仓库
+git clone https://github.com/nikkinikki-org/openwrt-nikki.git feeds/danshui/luci-app-nikki
+echo "🚚 仓库已重新克隆至 feeds/danshui/luci-app-nikki"
+
+echo ""
+echo "==============================================="
 echo "🛠️  步骤 2: 移除 面板API 随机密码逻辑"
 echo "==============================================="
 
@@ -82,22 +94,27 @@ NIKKI_INIT="feeds/danshui/luci-app-nikki/nikki/files/uci-defaults/init.sh"
 if [ -f "$NIKKI_INIT" ]; then
     echo "🎯 找到目标文件: $NIKKI_INIT"
     
-    # 执行替换：将 random=$(...) 替换为 random=""
-    # 这样编译出的固件默认 api_secret 就会为空，方便直接登录
+    # 执行替换：将生成随机数的逻辑直接改为置空
+    # 这里使用了前面定义的变量 $NIKKI_INIT，确保路径一致
     sed -i 's/random=\$(awk.*)/random=""/g' "$NIKKI_INIT"
     
-    # 验证修改
+    # 验证修改：检查文件中是否成功出现了 random=""
     CHECK_RESULT=$(grep "random=\"" "$NIKKI_INIT")
     if [ -n "$CHECK_RESULT" ]; then
-        echo "✨ 代码修改成功！当前配置为: $CHECK_RESULT"
-        echo "💡 提示：固件安装后 api_secret 将为空。"
+        echo "✨ 代码修改成功！"
+        echo "📝 修改后的行内容: $CHECK_RESULT"
+        echo "💡 提示：固件安装后 api_secret 将为空，登录面板直接点确定即可。"
     else
-        echo "⚠️  警告：sed 替换可能未生效，请手动核对文件内容。"
+        echo "⚠️  警告：sed 替换可能未生效，请检查 init.sh 中的原始代码格式。"
     fi
 else
-    echo "❌ 错误：未找到目标文件！请确认插件路径是否正确。"
+    echo "❌ 错误：未找到目标文件 $NIKKI_INIT"
+    echo "请检查 git clone 是否成功，或者仓库内部目录结构是否变动。"
 fi
 echo "==============================================="
+
+
+
 
 # 创建固件存放规则数据的目录 (确保在源码根目录下的 files)
 mkdir -p files/usr/share/v2ray
