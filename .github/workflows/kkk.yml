@@ -1,0 +1,42 @@
+name: 自动清理工作流历史记录
+
+on:
+  workflow_dispatch: # 支持手动触发
+  schedule:
+    - cron: '0 0 * * *' # 每天北京时间早上 8 点自动运行一次
+
+jobs:
+  delete-runs:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write # 必须赋予删除权限
+    steps:
+      - name: 执行清理任务
+        run: |
+          # 自动获取当前仓库名称
+          repo="${{ github.repository }}"
+          
+          echo "🔍 正在搜索仓库 [$repo] 的历史运行记录..."
+          
+          # 获取前 100 条非运行中的记录 ID
+          # 过滤掉 status 为 in_progress (正在运行) 的记录，防止自杀式报错
+          runs=$(gh run list -R "$repo" --limit 100 --json databaseId,status -q '.[] | select(.status != "in_progress") | .databaseId')
+          
+          if [ -z "$runs" ]; then
+            echo "✅ 报告：没有发现可清理的历史记录，列表很干净！"
+            exit 0
+          fi
+
+          count=0
+          for run_id in $runs; do
+            echo "🗑️  正在删除记录 ID: $run_id ..."
+            gh run delete -R "$repo" "$run_id"
+            count=$((count + 1))
+          done
+          
+          echo "==============================================="
+          echo "✨ 清理大功告成！"
+          echo "🚀 本次共计删除记录数: $count"
+          echo "==============================================="
+        env:
+          GH_TOKEN: ${{ github.token }}
