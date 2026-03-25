@@ -1,0 +1,15 @@
+
+config global 'global'
+	option enable '1'
+	option timestamp '1771150390'
+
+config user '48b962011dbe42f3a19a64522019ad9a'
+	option enable '1'
+	option log '1'
+	option remarks 'HJ'
+	option type 'SS'
+	option port '16000'
+	option password 'xiaohuihui'
+	option method 'aes-256-gcm'
+	option timeout '300'
+
