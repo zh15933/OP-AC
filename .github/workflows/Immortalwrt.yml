@@ -29,7 +29,7 @@ on:
         type: choice
         options:
           - 'x86_64'
-          - 'x86_64_2'
+          - 'armsr_rootfs_tar_gz'
       INFORMATION_NOTICE:
         description: 'Telegram或pushplus信息通知'
         required: true
@@ -42,11 +42,11 @@ on:
       KEEP_WORKFLOWS:
         description: '清理workflows,保留[X]个runs不被清理'
         required: true
-        default: '15'
+        default: '50'
       KEEP_RELEASES:
         description: '清理Releases,保留[X]个Releases不被清理'
         required: true
-        default: '15'
+        default: '30'
       SSH_ACTION:
         description: 'SSH远程配置固件'
         required: false
@@ -76,6 +76,7 @@ on:
 
 # 如若启动定时编译的话,配置文件是设置对应文件夹内的settings.ini文件
 # 定时触发开启开始编译(把下面两个#去掉开启,时间设置请看定时开启编译说明)
+# 定时触发开启开始编译(把下面两个#去掉开启,时间设置请看定时开启编译说明)
   schedule:
    - cron: 0 8 */6 * *
 
@@ -91,7 +92,7 @@ jobs:
   build:
     name: 启动"${{ matrix.target }}-${{ github.event.inputs.REPO_BRANCH }}"触发编译
     runs-on: ubuntu-22.04
-    if: github.event.repository.owner.id == github.event.sender.id
+    if: ${{ github.event.repository.owner.id }} == ${{ github.event.sender.id }}
     
     env:
       FOLDER_NAME: ${{ matrix.target }}
@@ -104,7 +105,7 @@ jobs:
         
     steps:
     - name: 准备结束
-      uses: actions/checkout@v6
+      uses: actions/checkout@v4
       
     - name: 检测密匙/文件/版本
       uses: 281677160/common@mishi
