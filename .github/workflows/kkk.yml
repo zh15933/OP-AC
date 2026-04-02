@@ -3,7 +3,9 @@ name: 自动清理工作流历史记录
 on:
   workflow_dispatch: # 支持手动触发
   schedule:
-    - cron: '0 0 1,15 * *' # 每天北京时间早上 8 点自动运行一次
+    # 设定为每月 1 号和 15 号
+    # UTC 时间 00:00 对应北京时间早上 08:00
+    - cron: '0 0 1,15 * *'
 
 jobs:
   delete-runs:
