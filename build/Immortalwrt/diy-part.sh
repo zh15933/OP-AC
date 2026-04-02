@@ -135,6 +135,24 @@ ln -sf /usr/share/v2ray/geosite.dat files/etc/v2ray/geosite.dat
 echo "✅ 数据包预制完成！"
 
 
+# 1. 确保脚本文件有执行权限
+chmod +x files/usr/share/update-pw.sh
+
+# 2. 将 uppass 设置为全局命令别名
+# 写入 /etc/profile 确保 SSH 登录后可用
+echo "alias uppass='sh /usr/share/update-pw.sh'" >> package/base-files/files/etc/profile
+
+# 3. 注入到系统初始化脚本（双重保险）
+# 确保即使重置固件，别名依然能通过初始化逻辑恢复
+DEFAULT_SETTINGS="package/emortal/default-settings/files/99-default-settings"
+if [ -f "$DEFAULT_SETTINGS" ]; then
+    sed -i '/exit 0/d' "$DEFAULT_SETTINGS"
+    echo "sed -i '\$ a alias uppass=\"sh /usr/share/update-pw.sh\"' /etc/profile" >> "$DEFAULT_SETTINGS"
+    echo "exit 0" >> "$DEFAULT_SETTINGS"
+fi
+
+
+
 # 修改插件名字
 grep -rl '"终端"' . | xargs -r sed -i 's?"终端"?"TTYD"?g'
 grep -rl '"TTYD 终端"' . | xargs -r sed -i 's?"TTYD 终端"?"TTYD"?g'
