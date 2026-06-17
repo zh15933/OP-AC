@@ -66,10 +66,10 @@ export rootfs_size="512/2560"
 export kernel_usage="stable"
 
 # 升级 Golang 26.x 
-# echo "🛠️ 正在升级 Golang 环境至 26.x..."
-# rm -rf feeds/packages/lang/golang
-# git clone https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
-# echo "✅ Golang 环境已更新！"
+echo "🛠️ 正在升级 Golang 环境至 26.x..."
+rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
+echo "✅ Golang 环境已更新！"
 
 echo ""
 echo "==============================================="
