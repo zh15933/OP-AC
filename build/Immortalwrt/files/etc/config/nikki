@@ -3,7 +3,7 @@ config status 'status'
 
 config config 'config'
 	option enabled '0'
-	option start_delay '0'
+	option start_delay '2'
 	option scheduled_restart '0'
 	option scheduled_restart_cron '0 3 * * *'
 	option test_profile '1'
@@ -136,7 +136,7 @@ config sniff
 
 config proxy 'proxy'
 	option enabled '1'
-	option tcp_mode 'redirect'
+	option tcp_mode 'tproxy'
 	option ipv4_dns_hijack '1'
 	option ipv6_dns_hijack '1'
 	option ipv4_proxy '1'
@@ -174,7 +174,7 @@ config proxy 'proxy'
 	option bypass_china_mainland_ip6 '1'
 	option proxy_tcp_dport '21 22 80 110 143 194 443 465 853 993 995 8080 8443'
 	option proxy_udp_dport '123 443 8443'
-	option udp_mode 'tun'
+	option udp_mode 'tproxy'
 
 config router_access_control
 	option enabled '1'
@@ -231,4 +231,5 @@ config log 'log'
 	option scheduled_clear_cron '*/5 * * * *'
 	option scheduled_clear_size_limit '1'
 	option scheduled_clear_size_limit_unit 'MB'
+	option clear_at_stop '1'
 
