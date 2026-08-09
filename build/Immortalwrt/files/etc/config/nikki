@@ -134,7 +134,7 @@ config sniff
 
 config proxy 'proxy'
 	option enabled '1'
-	option tcp_mode 'tproxy'
+	option tcp_mode 'tun'
 	option ipv4_dns_hijack '1'
 	option ipv6_dns_hijack '0'
 	option ipv4_proxy '1'
@@ -172,7 +172,7 @@ config proxy 'proxy'
 	option bypass_china_mainland_ip6 '1'
 	option proxy_tcp_dport '21 22 80 110 143 194 443 465 853 993 995 8080 8443'
 	option proxy_udp_dport '123 443 8443'
-	option udp_mode 'tproxy'
+	option udp_mode 'tun'
 
 config router_access_control
 	option enabled '1'
