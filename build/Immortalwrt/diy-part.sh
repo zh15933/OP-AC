@@ -114,36 +114,6 @@ else
 fi
 echo "==============================================="
 
-
-# 1. 创建固件存放规则数据的目录
-mkdir -p files/usr/share/v2ray
-mkdir -p files/etc/v2ray
-
-echo "🌐 正在下载 GeoIP/GeoSite 数据包..."
-
-# 2. 下载 GeoIP（遇到错误直接退出，避免打包坏文件）
-if curl -sLf -o files/usr/share/v2ray/geoip.dat https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat; then
-    # 成功后创建软链接：从 /etc/v2ray 到 /usr/share/v2ray 的相对路径是 ../../usr/share/v2ray/
-    # 但在固件运行期，系统内的绝对路径其实是最安全的
-    ln -sf /usr/share/v2ray/geoip.dat files/etc/v2ray/geoip.dat
-    echo "🎯 GeoIP 下载并链接成功"
-else
-    echo "❌ GeoIP 下载失败，请检查网络！"
-    exit 1
-fi
-
-# 3. 下载 GeoSite
-if curl -sLf -o files/usr/share/v2ray/geosite.dat https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat; then
-    ln -sf /usr/share/v2ray/geosite.dat files/etc/v2ray/geosite.dat
-    echo "🎯 GeoSite 下载并链接成功"
-else
-    echo "❌ GeoSite 下载失败，请检查网络！"
-    exit 1
-fi
-
-echo "✅ 数据包预制完成！"
-
-
 # 1. 确保脚本文件有执行权限
 chmod +x files/usr/share/update-pw.sh
 
