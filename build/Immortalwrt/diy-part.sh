@@ -89,30 +89,6 @@ echo "==============================================="
 echo "🛠️  步骤 2: 移除 面板API 随机密码逻辑"
 echo "==============================================="
 
-# 定义目标文件路径
-NIKKI_INIT="feeds/danshui/luci-app-nikki/nikki/files/uci-defaults/init.sh"
-
-if [ -f "$NIKKI_INIT" ]; then
-    echo "🎯 找到目标文件: $NIKKI_INIT"
-    
-    # 执行替换：将生成随机数的逻辑直接改为置空
-    # 这里使用了前面定义的变量 $NIKKI_INIT，确保路径一致
-    sed -i 's/random=\$(awk.*)/random=""/g' "$NIKKI_INIT"
-    
-    # 验证修改：检查文件中是否成功出现了 random=""
-    CHECK_RESULT=$(grep "random=\"" "$NIKKI_INIT")
-    if [ -n "$CHECK_RESULT" ]; then
-        echo "✨ 代码修改成功！"
-        echo "📝 修改后的行内容: $CHECK_RESULT"
-        echo "💡 提示：固件安装后 api_secret 将为空，登录面板直接点确定即可。"
-    else
-        echo "⚠️  警告：sed 替换可能未生效，请检查 init.sh 中的原始代码格式。"
-    fi
-else
-    echo "❌ 错误：未找到目标文件 $NIKKI_INIT"
-    echo "请检查 git clone 是否成功，或者仓库内部目录结构是否变动。"
-fi
-echo "==============================================="
 
 # 1. 确保脚本文件有执行权限
 chmod +x files/usr/share/update-pw.sh
