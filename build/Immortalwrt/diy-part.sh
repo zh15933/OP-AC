@@ -65,11 +65,31 @@ export auto_kernel="true"
 export rootfs_size="512/2560"
 export kernel_usage="stable"
 
-# 升级 Golang 26.x 
-echo "🛠️ 正在升级 Golang 环境至 26.x..."
+# ----------------------------------------------------------
+# 强制升级 Golang 至 27.x 并进行版本提取与校验
+# ----------------------------------------------------------
+echo "🛠 正在升级 Golang 环境至 27.x..."
 rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 27.x feeds/packages/lang/golang
+git clone --depth=1 https://github.com/sbwml/packages_lang_golang -b 27.x feeds/packages/lang/golang
 echo "✅ Golang 环境已更新！"
+
+# 🔍 提取并显示当前生效的 Go 版本
+echo "=========================================="
+if [ -f "feeds/packages/lang/golang/golang/Makefile" ]; then
+    # 提取 Makefile 中的主次版本号
+    GO_VER=$(grep -E "^GO_VERSION_MAJOR_MINOR:=" feeds/packages/lang/golang/golang/Makefile | cut -d'=' -f2)
+    echo "🎯 当前检测到的 Go 版本为: ${GO_VER}"
+else
+    echo "❌ 未能找到 Makefile，版本检测失败！"
+fi
+echo "=========================================="
+
+# 🧹 清理旧的 Go 编译缓存与临时产物，防止旧版本工具链残留
+echo "🧹 正在清理旧的宿主机 Go 编译缓存..."
+rm -rf staging_dir/hostpkg/stamp/.golang* \
+       build_dir/hostpkg/go-* \
+       tmp/go-build \
+       dl/go-mod-cache || true
 
 
 echo ""
