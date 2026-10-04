@@ -1,0 +1,21 @@
+
+config global 'global'
+	option enable '1'
+	option start_delay '10'
+
+config server 'BpZUh5wU'
+	option enable '1'
+	option log '1'
+	option remarks 'HJ'
+	option type 'Xray'
+	option protocol 'shadowsocks'
+	option port '16000'
+	option method 'aes-256-gcm'
+	option ss_password 'xiaohuihui'
+	option ss_network 'tcp,udp'
+	option tls '0'
+	option transport 'raw'
+	option tcp_guise 'none'
+	option accept_lan '1'
+	option loglevel 'warning'
+
