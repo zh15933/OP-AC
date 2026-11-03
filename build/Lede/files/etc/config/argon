@@ -1,12 +1,15 @@
 
 config global
 	option primary '#FF6347'
-	option dark_primary '#FF6347'
+	option dark_primary '#ff9dce'
 	option blur '1'
 	option blur_dark '1'
 	option transparency '0'
 	option transparency_dark '0'
 	option mode 'normal'
-	option bing_background '0'
 	option save '保存更改'
+	option online_wallpaper 'none'
+	option dark_primary_mode 'custom'
+	option dark_glass_mode 'inherit'
+	option login_style 'centered'
 
